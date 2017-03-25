@@ -1,4 +1,4 @@
-# fcc-game-of-life
+# FCC Game of Life
 
 Game Of Life App made with React for <a href='https://www.freecodecamp.com'>FreeCodeCamp</a> curriculum.
 
