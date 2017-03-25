@@ -1,6 +1,6 @@
 # FCC Game of Life
 
-Game Of Life App made with React for <a href='https://www.freecodecamp.com'>FreeCodeCamp</a> curriculum.
+<a href='https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life'>Game Of Life</a> App made with React for <a href='https://www.freecodecamp.com'>FreeCodeCamp</a> curriculum.
 
 <strong>User Stories:</strong>
 <ul>
