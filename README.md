@@ -1,6 +1,6 @@
 # fcc-game-of-life
 
-Marked-Down-Previewr App made with React for <a href='https://www.freecodecamp.com'>FreeCodeCamp</a> curriculum.
+Game Of Life App made with React for <a href='https://www.freecodecamp.com'>FreeCodeCamp</a> curriculum.
 
 <strong>User Stories:</strong>
 <ul>
