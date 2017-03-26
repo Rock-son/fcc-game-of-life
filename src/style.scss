@@ -1,0 +1,274 @@
+
+@mixin not-user-selectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+@mixin calc($prop0, $prop1) {
+  #{$prop0}: -moz-calc(#{$prop1});
+  #{$prop0}: -webkit-calc(#{$prop1});
+  #{$prop0}: calc(#{$prop1});
+}
+@mixin crossBrowser($prop, $value) {
+  -o-#{$prop}: $value;
+  -webkit-#{$prop}: $value;
+  -khtml-#{$prop}: $value;
+  -moz-#{$prop}: $value;
+  -ms-#{$prop}: $value;
+  $prop: $value;
+}
+@mixin crossBrowser2($prop1, $prop2, $value) {
+  -o-#{$prop1}-#{$prop2}: $value;
+  -webkit-#{$prop1}-#{$prop2}: $value;
+  -khtml-#{$prop1}-#{$prop2}: $value;
+  -moz-#{$prop1}-#{$prop2}: $value;
+  -ms-#{$prop1}-#{$prop2}: $value;
+  #{$prop1}-#{$prop2}: $value;
+}
+@mixin bkgrLinearGradient($prop1, $prop2, $prop3) {
+  background: -moz-linear-gradient(-45deg, #{$prop1} 0%, #{$prop2} 50%, #{$prop3} 100%);
+  background: -webkit-gradient(left top, right bottom, color-stop(0%, #{$prop1}), color-stop(50%, #{$prop2}), color-stop(100%, #{$prop3}));
+  background: -webkit-linear-gradient(-45deg, #{$prop1} 0%, #{$prop2} 50%, #{$prop3} 100%);
+  background: -o-linear-gradient(-45deg, #{$prop1} 0%, #{$prop2} 50%, #{$prop3} 100%);
+  background: -ms-linear-gradient(-45deg, #{$prop1} 0%, #{$prop2} 50%, #{$prop3} 100%);
+  background: linear-gradient(135deg, #{$prop1} 0%, #{$prop2} 50%, #{$prop3} 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=#{$prop1}, endColorstr=#{$prop3}, GradientType=1 );
+}
+
+
+body {
+  @include bkgrLinearGradient(#eddcad, #f44b42, #eddcad);
+  background-size: cover;
+}
+a:hover {  
+  text-decoration: none;
+}
+
+.header {
+    margin: 0 auto;
+    height: 60px;
+    line-height: 60px;
+    width: 440px;
+    text-align: center;
+    @include crossBrowser2(box, sizing, content-box);
+    @include crossBrowser(transition, transform 1s ease 0s);
+    background-color: rgba(255,255,255,0);
+    &:hover {
+      @include crossBrowser(transition, transform 2s ease 0s);
+    }
+    &:hover div {     
+      @include crossBrowser(transform, scale(.95));
+      @include crossBrowser(transition, all 3s ease 0s);
+      &:after {
+        content: attr(data-hov);
+        color: lighten(gold, 5%);
+        font-size: 55px;
+        text-shadow: -1px 1px cyan, 0 1px 2px black, 1px 1px black, 2px 2px 1px white;
+      }
+    }
+    & div {
+      content: attr(innertext);
+      height: 100%;
+      width: 100%;
+      font-family: Pacifico, Calibri, Arial, Sanserif;
+      font-size: 50px;
+      line-height: 55px;
+      font-weight: 700;
+      color: rgb(0, 255, 0);
+      color: rgba(0, 255, 0, 1);
+      text-shadow: -1px 1px cyan, 0 1px 2px black, 1px 1px white, 5px 5px 35px lightgreen;
+      
+      &:after {
+          content: attr(data);
+          color: green;
+          left: -50px;
+          @include crossBrowser(transition, all 1s ease 0s);
+      }
+   }
+}
+.boxContainer {
+  width: 100%;
+  height: 100%;
+  margin-top: 1%;
+  padding-bottom: 5%;
+}
+
+.box {
+  margin: auto;
+  height: 930px;
+  width: 1020px;
+  text-align: center;
+  border: 5px outset silver;
+  //background: #f44b42 url('https://www.dropbox.com/s/2eew5wdife9iner/sun1920.jpg?dl=1') no-repeat center center;
+  background-size: cover;
+  @include crossBrowser2(border, radius, 25px);
+  @include crossBrowser2(box, shadow, 0px 5px 15px 5px black);
+  @media screen and (max-width: 1050px) {margin-left: 0;}
+  #btnRow {
+    margin: 2% 0 0 0;
+    width: 100%;
+    .btnBorder {
+      margin: auto;
+      width: 380px;
+      padding: 10px 10px 10px 25px;
+      border: 1px outset lighten(grey, 5%);
+      @include crossBrowser2(border, radius, 5px);
+      button {
+        margin: 0 20px 5px 0;
+        width: 90px;
+        font-family: Calibri, Arial, Sanserif;
+        font-size: 18px;
+        text-shadow: 1px 1px 1px black;
+        @include crossBrowser2(border, radius, 5px);
+        @include crossBrowser(transition, all .4s ease 0s);
+        &:hover {
+          @include crossBrowser(transform, scale(1.05));
+        }
+      }
+    }
+  }
+  #radioGroup {
+     width: 300px;
+     margin: auto;
+     border: 1px solid #ccc;
+     margin-bottom: 0;
+  }
+  label:not(#radioGroup) {
+    display: inline-block;
+    margin: 1%;
+    font-size: 20px;    
+    color: white;
+    text-shadow: 1px 1px 1px black;
+  }
+  #ctrlSelect {
+    display: inline-block;
+    margin: 1% 1% 0 1%;
+    padding: 0 0 0 15px;
+    width: 120px;
+    height: 32px;
+    line-height: 5px;
+    font-size: 18px;    
+    font-family: Calibri, Arial, Sanserif;
+    font-weight: 700;
+    background-color: #ffffe6;
+    background-color: rgba(255, 255, 230, 0);    
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    & option {
+      padding: inherit;
+      background-color: white;
+      text-shadow: inherit;
+    }
+  }
+  .generation {
+    display: inline-block;
+    margin: 0% auto;
+    padding: 0;
+    font-size: 20px;
+    color: black;
+    height: 20px;
+    width: 300px;
+    text-align: center;
+    text-shadow: 1px 1px 1px white;
+  }
+  #playground {    
+    margin: 0% 5% 7% 5.5%;
+    width: 90%;
+    //border-left: 1px solid grey;
+    padding: 1px 0;
+    font-size: 0;
+    @include crossBrowser2(border, radius, 5px);
+  }
+
+  .cell {
+    display: inline-block;
+    font-size: 14px;
+    border: 1px solid rgb(96, 90, 90);
+    margin: 0;
+   /* &:nth-child(60n+1) {
+      border-left: 5px solid rgb(96, 90, 90);
+    }
+    &:nth-child(60n) {
+      border-right: 5px solid rgb(96, 90, 90);
+    }
+    &:nth-child(-n + 60) {
+      border-top: 5px solid rgb(96, 90, 90);
+    }
+    &:nth-child(n+2641) {
+      border-bottom: 5px solid rgb(96, 90, 90);
+    }*/
+    &.active {
+      background-color: lighten(gold, 20%);
+      border: 1px outset white;
+    }
+    &.active.old {
+      background-color: gold;
+      border: 1px outset white;
+    }
+  }
+}
+@media screen and (max-width: 1040px) {
+  .header {
+      margin: 0 0 0 280px;
+  }  
+}
+
+@media screen and (max-width: 740px) {
+  .header {
+    height: 60px;
+    line-height: 60px;
+    & div {
+      font-size: 48px;
+    }    
+  }
+  #btnRow .btnBorder {
+    margin: auto 0 auto 8%;
+  }
+}
+
+@media screen and (max-width: 505px) {
+  body {
+    height: 120vh;
+  }
+  .header {
+    width: 250px;
+    margin: 0 auto;
+    & div {
+        height: 40px;
+        line-height: 40px;
+        font-size: 40px;
+    }
+  }
+  .box {   
+    margin: -250px 0 0 -300px;
+    @include crossBrowser(transform, scale(0.4));
+  }
+  #btnRow .btnBorder {
+    margin: auto 0;
+  }
+  .coded {
+    margin-top: -300px;
+  }
+}
+
+.coded {
+  font-size: 8px;
+  color: white;
+}
+
+
+@-webkit-keyframes textChange {  
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+@-moz-keyframes textChange {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+@keyframes textChange {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
