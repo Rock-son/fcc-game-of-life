@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ButtnContainer, {Cell} from './buttonContainer';
+import BtnContainer, {Cell} from './buttonContainer';
 
 
 export default class Container extends React.Component {
