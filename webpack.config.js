@@ -1,6 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const VENDOR_LIBS = ['react', 'react-dom', 'react-bootstrap'];
 
@@ -10,8 +12,8 @@ const config = {
         vendor: VENDOR_LIBS
     },
     output: {
-        path: path.join(__dirname, 'build'),
-        filename: '[name].js'
+        path: path.join(__dirname, 'build'),        
+        filename: '[name].[chunkhash].js'
     },
     resolve: {
         extensions: ['.js', '.jsx']
@@ -35,8 +37,13 @@ const config = {
     plugins: [
         new ExtractTextPlugin({filename: 'style.css'}),
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor'
-        })
+            names: ['vendor', 'manifest']
+        }),
+        new HtmlWebpackPlugin({
+            template: 'src/index.html',
+            filename: '../index.html'
+        }),
+        new UglifyJSPlugin()
     ]
 }
 
